@@ -2,8 +2,20 @@ class Api::V1::TasksController < ApplicationController
     before_action :set_task, only: %i[show update destroy]
   
     def index
-        @tasks = Task.filter_by_status(params[:done]).order(created_at: :desc)
-        render json: @tasks
+        @tasks = Task.filter_by_status(params[:done])
+                     .order(created_at: :desc)
+                     .page(params[:page])
+                     .per(params[:per_page] || 10)
+      
+        render json: {
+          tasks: @tasks,
+          meta: {
+            current_page: @tasks.current_page,
+            total_pages: @tasks.total_pages,
+            total_count: @tasks.total_count,
+            per_page: @tasks.limit_value
+          }
+        }
     end
   
     def show
