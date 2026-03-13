@@ -1,46 +1,49 @@
-# 📝 Todo API
+# 📝 Todo API + Frontend
 
-API REST para gerenciamento de tarefas (To-Do List) construída com Ruby on Rails 7.
+Projeto fullstack de gerenciamento de tarefas construído com Ruby on Rails 7 (API) e React (Frontend).
 
 ## Tecnologias
 
+**Backend**
 - Ruby 3.1.2
 - Rails 7.0
 - PostgreSQL
 - Orientação a Objetos com módulo de exceções customizado
 
-## Endpoints
+**Frontend**
+- React 18
+- Vite
+- Axios
+
+## Endpoints da API
 
 | Método | Rota | Descrição |
 |--------|------|-----------|
 | GET | /api/v1/tasks | Lista todas as tasks |
+| GET | /api/v1/tasks?done=true | Filtra por concluídas |
+| GET | /api/v1/tasks?done=false | Filtra por pendentes |
 | GET | /api/v1/tasks/:id | Busca uma task |
 | POST | /api/v1/tasks | Cria uma task |
 | PATCH | /api/v1/tasks/:id | Atualiza uma task |
 | DELETE | /api/v1/tasks/:id | Deleta uma task |
 
-## Como rodar localmente
+## ⚙️ Como rodar localmente
 
-**1. Clone o repositório:**
-```bash
-git clone https://github.com/seu-usuario/todo-api.git
-cd todo-api
-```
-
-**2. Instale as dependências:**
+**Backend:**
 ```bash
 bundle install
-```
-
-**3. Configure o banco de dados:**
-```bash
 rails db:create db:migrate
-```
-
-**4. Suba o servidor:**
-```bash
 rails server
 ```
+
+**Frontend:**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Acesse `http://localhost:5173`
 
 ## Exemplos de uso
 
