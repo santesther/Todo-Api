@@ -2,8 +2,8 @@ class Api::V1::TasksController < ApplicationController
     before_action :set_task, only: %i[show update destroy]
   
     def index
-      @tasks = Task.all.order(created_at: :desc)
-      render json: @tasks
+        @tasks = Task.filter_by_status(params[:done]).order(created_at: :desc)
+        render json: @tasks
     end
   
     def show
